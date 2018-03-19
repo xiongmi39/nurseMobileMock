@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Specifies intentionally untracked files to ignore when using Git
 # http://git-scm.com/docs/gitignore
 
@@ -33,6 +34,8 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 =======
+=======
+>>>>>>> 777994c13e7afb3233dc88fad2f2222b6a8d8df6
 # Logs
 logs
 *.log
@@ -92,4 +95,7 @@ typings/
 # dotenv environment variables file
 .env
 
+<<<<<<< HEAD
 >>>>>>> 8067b0fb79cda8bd643c6e56c77556090fd034ef
+=======
+>>>>>>> 777994c13e7afb3233dc88fad2f2222b6a8d8df6
