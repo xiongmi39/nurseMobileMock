@@ -1,0 +1,7 @@
+    <video #videoplayer   controls="controls" preload="metadata" webkit-playsinline class="videoPlayer" width="100%" height="100%" (pause)="pauseEvent($event)" (timeupdate) ="timeChange()"  (ended)="ended()"   (play)="playEvent()"  (canplay)="canplay()" (loadstart)="loadstart()">
+    <source src={{vodUrl}} type="video/mp4"/>
+    </video>
+    <ion-spinner *ngIf="isLoading"  style="position: absolute;left:45%;top:40%;"></ion-spinner>
+    <!-- <ion-icon showWhen="android,ios" name="expand" (click)="fullScreen()" style="z-index:101;position: absolute;top: 10px;right: 10px; color: #fff;font-size: 20px;"></ion-icon> -->
+
+

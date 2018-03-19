@@ -1,0 +1,31 @@
+<ion-header>
+	<ion-toolbar color='dark'>
+	<ion-searchbar (ionInput)="searchCourse($event)">
+	</ion-searchbar>
+	<a end (click)='popView()'>取消</a>
+</ion-toolbar>
+</ion-header>
+
+<ion-content></ion-content>
+
+<ion-content padding>
+	<ion-list>
+		<ion-item padding *ngFor="let item of courseList" (click)="goCourseDetail(item)">
+			<ion-thumbnail item-left>
+				<img src="{{item.imgUrl}}">
+			</ion-thumbnail>
+			<h3>{{item.CourseName}}</h3>
+			<p>{{item.CourseIntro}}</p>
+		</ion-item>
+
+	</ion-list>
+</ion-content>
+
+<!-- <ion-header>
+<ion-searchbar
+  [(ngModel)]="myInput"
+  [showCancelButton]="shouldShowCancel"
+  (ionInput)="onInput($event)"
+  (ionCancel)="onCancel($event)">
+</ion-searchbar>
+</ion-header> -->

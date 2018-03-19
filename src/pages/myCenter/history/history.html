@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-navbar >
+		<ion-title>历史</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+<ion-content>
+<ion-spinner  *ngIf="isLoading" class='ionSpinner'></ion-spinner>
+<!--     <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher> -->
+    <ion-card *ngFor="let dateTitle of dateList">
+      <ion-card-header>
+        {{dateTitle}}
+      </ion-card-header>
+      <ion-card-content>
+        <course-list-component [courseList]  = "dayList[dateTitle]"></course-list-component>
+      </ion-card-content>
+    </ion-card>
+	
+<!--   <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content color="primary">
+      loadingSpinner="crescent"
+      loadingText="Loading more fun...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+</ion-content>

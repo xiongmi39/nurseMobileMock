@@ -1,0 +1,52 @@
+// http://ionicframework.com/docs/v2/theming/
+
+	ion-content {
+		background : color($colors, panel) !important;
+	}
+	a {
+		color: #000;
+	}
+	.normalBtn {
+		background: #387ef5 !important;
+	}
+	ion-toolbar{
+		height: 50px;
+	}
+	ion-navbar{
+		height: 50px;
+	}
+	.jiathis_weixin_modal {
+		left:55% !important;
+	}
+	ion-card{
+		margin-left: 0px !important;
+		margin-right: 0px !important;
+		width: 100% !important;
+	}
+	.startBtn {
+		margin: 0px !important;
+	}
+	.ionSpinner {
+		display: block !important;
+		margin: 0 auto !important;		
+	}
+	.redspot {
+		height: 10px;
+		width: 10px;
+		border-radius: 50%;
+		background-color: #f53d3d;
+	}
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.

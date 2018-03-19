@@ -1,0 +1,57 @@
+<!--
+  Generated template for the Message page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>消息</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+	<ion-segment [(ngModel)]="dws">
+		<ion-segment-button value="notice">
+			公告
+		</ion-segment-button>
+		<ion-segment-button value="msg">
+			私信
+		</ion-segment-button>
+	</ion-segment>
+	<div [ngSwitch]="dws" class="contentdiv">
+		<ion-list *ngSwitchCase="'notice'">
+    <ion-item *ngFor="let item of noticeList"  (click)='goMsgdetail(item)'>
+    	<h2>{{item.MessageTitle}}</h2><div class="redspot" style="display:block;float: right;"></div>
+    	<p>{{item.MessageContent}}</p>
+
+    </ion-item>
+<!--     <ion-item >
+    	<h2>title</h2>
+    	<p>content</p>
+    </ion-item>
+    <ion-item >
+    	<h2>title</h2>
+    	<p>content</p>
+    </ion-item>  -->           
+</ion-list>
+
+<ion-list *ngSwitchCase="'msg'">
+	<ion-item >
+		<h2>      </h2>
+		<p>           </p>
+	</ion-item>
+<!-- 	<ion-item >
+		<h2>msgtitle</h2>
+		<p>content</p>
+	</ion-item>
+	<ion-item >
+		<h2>msgtitle</h2>
+		<p>content</p>
+	</ion-item> -->
+</ion-list>
+</div>
+</ion-content>

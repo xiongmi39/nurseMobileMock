@@ -1,0 +1,3 @@
+    <video #videoplayer  controls="controls" preload="metadata" webkit-playsinline class="videoPlayer" width="100%" (pause)="pauseEvent($event)" (timeupdate) ="timeChange()"  (ended)="ended()">
+    <source src={{vodUrl}} type="video/mp4"/>
+    </video>

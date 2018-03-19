@@ -1,0 +1,15 @@
+<ion-header>
+	<ion-navbar >
+		<ion-title>课程计划</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+<ion-content >
+      	<ion-list>
+		<button ion-item *ngFor="let item of schedules" (click)='goPlanCourseList(item)'>
+		<ion-icon name="flag" item-left color="danger"></ion-icon>
+			{{item.PlanName}}
+		</button>
+	</ion-list>
+</ion-content>

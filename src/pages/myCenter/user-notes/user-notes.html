@@ -1,0 +1,36 @@
+<!--
+  Generated template for the UserNotes page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>笔记</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-spinner  *ngIf="isLoading" class='ionSpinner'></ion-spinner>
+<!--     <ion-list >
+      <ion-item *ngFor="let item of userNotes" (click)='goCourseDetail(item)'>
+        <p>{{item.Content}}</p>
+      </ion-item>
+    </ion-list> -->
+
+    <ion-card *ngFor="let item of userNotes">
+      <ion-card-header style="font-size: 10px;color:#999;text-align: right"  (click)='goCourseDetail(item)'>
+        {{item.Course.CourseName}}
+      </ion-card-header>
+      <ion-card-content>
+       <p>{{item.Content}}</p> 
+       <span style="font-size: 10px;color:#999;text-align: right;display: block">{{item.ModifyDate   | todate:"yyyy-MM-dd"}}</span>
+       <ion-icon name="trash" class="trash" (click)="showConfirm(item)" style="text-align: center;display: block;font-size: 20px"></ion-icon>
+     
+      </ion-card-content>
+     
+    </ion-card>
+</ion-content>

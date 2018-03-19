@@ -1,0 +1,24 @@
+search {
+	ion-searchbar {
+		width: 85%;
+		display: inline-block;
+	}
+	ion-header a {
+		color:#fff !important;
+	}
+
+	ion-thumbnail img{
+		height: 80px !important;
+		width: auto !important;
+	}
+	ion-label h3{
+		margin-top: 0 !important;
+	}
+	ion-item {
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
+	ion-item a{
+		display: flex;
+	}
+}

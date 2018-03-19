@@ -1,0 +1,45 @@
+
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>忘记密码</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>手机号</ion-label>
+      <ion-input type="text" value="" [(ngModel)]="formData.LoginName" clearInput="true"></ion-input>
+
+    </ion-item>
+    <ion-item style="width: 100%;">
+      <ion-label >验证码</ion-label>
+     <!--  <ion-input type="text" value="" [(ngModel)]="SMSCode" class='smscodeInput'></ion-input> -->
+      <input type="text" item-content [(ngModel)]="SMSCode" class='smscodeInput'>
+      <!--       <div item-content  color="secondary" class="updateBtn"  style='position: absolute;right: 10px;font-size: 14px;color:#6bc30d' (click)="getSMSCodeSend()">{{sendCount}}</div> -->
+      <button  item-content style='color:#6bc30d;background: #fff;font-size: 15px;'   (click)='getSMSCodeSend()' [disabled]="isDisabled">{{sendCount}}</button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>新密码</ion-label>
+      <ion-input type="password" [(ngModel)]="formData.pwd" clearInput="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>确认新密码</ion-label>
+      <ion-input type="password" [(ngModel)]="rpwd" clearInput="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <p *ngIf="ifShowMsg === true" color="danger">{{msg}}</p>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button ion-button block class="normalBtn" (click)="updatePwd()">修改密码</button>
+  </div>
+
+</ion-content>

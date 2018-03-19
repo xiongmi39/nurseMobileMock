@@ -1,0 +1,36 @@
+<ion-header>
+	<ion-navbar >
+		<ion-title>收藏</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+<ion-content>
+<ion-spinner  *ngIf="isLoading" class='ionSpinner'></ion-spinner>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+<!-- 	<ion-list>
+		<ion-item *ngFor="let item of collectList" (click)="goCourseDetail(item)">
+			<ion-grid>
+				<ion-row>
+					<ion-col col-4>
+						<div>{{item.CourseName}}</div>					
+						<img src="{{item.imgUrl}}">
+					</ion-col>
+					<ion-col col-8>
+
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-item>
+
+	</ion-list> -->
+	<course-list-component [courseList]  = "collectList"></course-list-component>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content color="primary">
+      loadingSpinner="crescent"
+      loadingText="Loading more fun...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

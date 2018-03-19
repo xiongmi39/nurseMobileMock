@@ -1,0 +1,52 @@
+<ion-header   >
+	<ion-navbar hideBackButton="true" >
+		<ion-item  *ngIf="isLogin === true">
+			<ion-avatar item-left (click)="goMyDetail()">
+				<img src="{{imgUrl}}">
+			</ion-avatar>
+			<ion-buttons end (click)='goMail()'>
+				<button ion-button icon-only color="royal">
+					<ion-icon name="mail" color="gray"></ion-icon>
+					<div class="redspot" style="margin-left:-10px;margin-top:-10px;"></div>
+				</button>
+			</ion-buttons>
+			<h2 *ngIf="!hasName">{{currentUser.Name}}</h2>
+			<h2 *ngIf="hasName">{{realName}}</h2>
+			<p (click)='goScore()'>总学分：<span>{{CreditRecordTotal}}</span> |   总积分：<span>{{IntegralTotal}}</span> </p>
+		</ion-item>
+		<ion-item *ngIf="isLogin === false">
+		<ion-title>
+			<button ion-button  color="secondary" (click)="goLogin()">登录/注册</button>
+		</ion-title>
+		
+		</ion-item>
+
+	</ion-navbar>
+</ion-header>
+<ion-content>
+	<ion-list>
+		<button ion-item (click)="goUserNotes()">
+		<ion-icon name="create" item-left color="gray"></ion-icon>
+			笔记
+		</button>
+		<button ion-item (click)="goCollection()">
+		<ion-icon name="bookmark" item-left color="gray" ></ion-icon>
+			收藏
+		</button>
+		<button ion-item  (click)="goHistory()">
+		<ion-icon name="time" item-left color="gray"></ion-icon>
+			历史
+		</button>
+		<button ion-item  (click)="goSchedule()">
+		<ion-icon name="flag" item-left color="gray"></ion-icon>
+			课程计划
+		</button>
+
+	</ion-list>
+	<ion-list>
+		<button ion-item (click)="goSetUp()">
+			<ion-icon name="cog" item-left color="gray"></ion-icon>
+			设置
+		</button>
+	</ion-list>
+</ion-content>

@@ -1,0 +1,97 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<ion-title>{{courseName}}</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content>
+
+<ion-spinner  *ngIf="isLoading" class='ionSpinner'></ion-spinner>
+
+	<ion-card>
+
+		<img src={{courseItem.imgUrl}}/>
+
+		<ion-card-content>
+			<ion-buttons end>
+				<button ion-button icon-only (click)="collectControl()">
+					<ion-icon name="star-outline" class="star" [ngClass]="{selected:isCollected}"></ion-icon>
+				</button>
+				<button ion-button icon-only onclick="jiathis_sendto('weixin');return false;">
+										<ion-icon name="share-alt"></ion-icon>
+<!-- 					<div id="ckepop">
+						<a href="javascript:;" onclick="jiathis_sendto('weixin');return false;" class="jiatitle"><span class="jtico jtico_weixin">微信</span></a> 
+						<a href="http://www.jiathis.com/share"  class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+						<a class="jiathis_counter_style"></a>
+
+					</div> --> 
+				</button>
+
+		</ion-buttons>
+		<ion-card-title>
+			{{courseItem.CourseName}}
+
+		</ion-card-title>
+		<p>
+			{{courseItem.CourseIntro}}
+		</p>
+	</ion-card-content>
+<!-- 		<ion-item>
+			学分
+			<ion-badge >{{courseItem.ChapterPoints}}</ion-badge>
+		</ion-item>
+		<ion-item>
+			已学习人数
+			<ion-badge item-right>{{courseItem.CourseHot}}</ion-badge>
+		</ion-item>
+		<ion-item>
+			来源：
+			<ion-badge item-right>西京医院</ion-badge>
+		</ion-item>
+		<ion-item>
+			老师
+			<ion-badge item-right>{{courseItem.CourseTeacher}}</ion-badge>
+		</ion-item> -->
+		<ion-grid>
+			<ion-row>
+				<ion-col col-6 >
+					学分:
+					<ion-badge >{{courseItem.ChapterPoints}}</ion-badge>
+				</ion-col>
+				<ion-col col-6 >
+					已学习人数:
+					<ion-badge item-right>{{courseItem.CourseHot}}</ion-badge>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+		<ion-grid>
+			<ion-row>
+				<ion-col col-6 >
+					来源:
+					<ion-badge item-right>西京医院</ion-badge>
+				</ion-col>
+				<ion-col col-6 >
+					老师:
+					<ion-badge item-right>{{courseItem.CourseTeacher}}</ion-badge>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+	</ion-card>
+	<div class="listPanel">
+		<ion-list padding>
+			<ion-list-header>
+				课程提纲
+			</ion-list-header>
+<!-- 			<ion-item *ngFor="let item of courseItem.chapters"><a (click)='goCourseLearn(courseItem,item)' class='active'><ion-icon name="play"></ion-icon>{{item.ChapterName}}</a></ion-item> -->
+<ion-item *ngFor="let item of courseItem.catalog">
+	 {{item.CatalogName}}
+	<ion-item *ngFor="let tip of treeData[item.CatalogName]" no-lines (click)='goCourseLearn(courseItem,tip)' >
+		<ion-icon name="play"></ion-icon>{{tip.ChapterName}}
+	</ion-item>
+</ion-item>
+</ion-list>
+</div>
+</ion-content>
+<ion-footer>
+	<button ion-button full class="startBtn" (click)='goCourseLearn(courseItem)'>开始学习</button>
+</ion-footer>

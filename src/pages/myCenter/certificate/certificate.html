@@ -1,0 +1,64 @@
+<!--
+  Generated template for the Certificate page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>实名认证</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+	<ion-list>
+		<ion-label>实名认证</ion-label>
+		<button ion-item (click)="changeInput('姓名','realName')" [disabled]="disableId">
+			<ion-label>姓名</ion-label>
+			<ion-label color="gray">{{details.realName}}</ion-label>
+		</button>
+		<button ion-item (click)="changeInput('身份证号','id')" [disabled]="disableId" >
+			<ion-label>身份证号</ion-label>
+			<ion-label color="gray" style="overflow: visible">{{details.id}}</ion-label>
+		</button>
+		<ion-item class='btnCenter' >
+			<button *ngIf="!disableId" ion-button color="secondary" class="updateBtn" style='display: block;width: 40px;margin: 0 auto;' (click)='realNameAuthentication()' >更新</button>
+			<div item-content style="color:#6bc30d;">{{idstatus}}</div>
+		</ion-item>
+
+	</ion-list>	
+
+	<ion-list>
+		<ion-label>职业认证</ion-label>
+		<div >
+		<button ion-item (click)="changeInput('执业证名称','CertificateName')" [disabled]="disablePro">
+			<ion-label>执业证名称</ion-label>
+			<ion-label color="gray" style="overflow: visible">{{details.CertificateName}}</ion-label>
+		</button>
+		<button ion-item (click)="changeInput('执业证编号','careerid')" [disabled]="disablePro">
+			<ion-label>执业证编号</ion-label>
+			<ion-label color="gray" style="overflow: visible">{{details.careerid}}</ion-label>
+		</button>		
+		<button ion-item (click)="changeInput('有效期至','careerDate')" [disabled]="disablePro">
+			<ion-label>有效期至</ion-label>
+			<ion-datetime displayFormat="YYYY-MM-DD" max="2027" pickerFormat="MMM DD YYYY" [(ngModel)]="details.careerDate"></ion-datetime>
+		</button>
+		<image-upload
+			[max]="100"
+			[url]="uploadurl"
+			[buttonCaption]="'上传图片'"
+			[dropBoxMessage]="'请选择执业证图片'"
+			(onFileUploadFinish)="imageUploaded($event)" *ngIf="!disablePro"></image-upload>
+		</div>
+		<ion-item class='btnCenter'>
+			<button *ngIf="!disablePro" ion-button color="secondary" class="updateBtn" class="updateBtn" style='display: block;width: 40px;margin: 0 auto;'  (click)='professionAuthentication()' >更新</button>
+			<div item-content style="color:#6bc30d">{{professionStatus}}</div>
+		</ion-item>
+
+	</ion-list>		
+
+
+</ion-content>

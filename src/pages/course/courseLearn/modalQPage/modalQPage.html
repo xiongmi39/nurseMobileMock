@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      问题
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios">取消</span>
+        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+      </button>
+    </ion-buttons>
+<!--     <ion-buttons start>
+      <button ion-button  (click)="dismiss()">
+        <span ion-text color="primary">放弃</span>
+      </button>
+    </ion-buttons> -->
+    <ion-buttons end>
+      <button ion-button  (click)="send()">
+        <span ion-text color="primary">提交</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div *ngFor="let title of showQuestionType">
+  <div style="color:#6bc30d;margin-top: 10px">{{title}}</div>
+
+  <ion-card *ngFor="let item of showQuestions[title]">
+    <ion-card-header  [ngClass]="{wrong:item.wrong}">
+      {{item.TitleName}}{{item.rightKey}}
+    </ion-card-header>
+
+    <ion-list radio-group [(ngModel)]="CourseAnswer[item.Qid]" *ngIf="!item.multi">
+      <ion-item *ngFor="let q of item.AnswersList">
+       <ion-label>{{q.Qt}}.{{q.Qc}}</ion-label>
+       <ion-radio value = '{{q.Qt}}'></ion-radio>
+     </ion-item>
+   </ion-list>
+
+   <ion-list *ngIf="item.multi" >
+   <ion-item  *ngFor="let q of item.AnswersList" >
+      <ion-label>{{q.Qt}}.{{q.Qc}}</ion-label>
+      <ion-checkbox [(ngModel)]="CourseAnswer[item.Qid][q.Qt]"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+ </ion-card>
+
+ </div>
+
+</ion-content>

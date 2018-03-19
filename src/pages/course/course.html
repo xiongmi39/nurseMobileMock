@@ -1,0 +1,36 @@
+<header-bar panelTitle="课程"></header-bar>
+
+<ion-content style="background: #e5e5e5">
+<ion-spinner  *ngIf="isLoading" class='ionSpinner'></ion-spinner>
+	<ion-card>
+		<ion-card-header>
+			课程
+		</ion-card-header>
+		<ion-card-content>
+			<ion-grid>
+				<ion-row>
+					<ion-col col-4 (click)="goCourseList(item,'basicDeps')" *ngFor="let item of basicDeps">
+						<div style="height:60px;background: #eee;position: relative;">
+							<img src={{item.imgUrl}} style="width: 35px;margin: auto;position: absolute; 
+							top: 0; bottom: 0;left: 0;right: 0">
+						</div>
+						<div style="text-align: center;">{{item.BasdeptName}}</div>
+					</ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-card-content>
+	</ion-card>
+	<ion-card>
+		<ion-card-header>
+			热门医院课程
+		</ion-card-header>
+		<ion-card-content>
+			<ion-grid>
+				<ion-row>
+					<ion-col col-4 (click)="goCourseList(item,'hospital')" *ngFor="let item of hospitalUnion"><img src={{item.imgUrl}}><div>{{item.HospName}}</div></ion-col>
+				</ion-row>
+			</ion-grid>
+		</ion-card-content>
+	</ion-card>
+	<div class="bottom-padding"></div>
+</ion-content>

@@ -1,0 +1,10 @@
+	<ion-list>
+		<ion-item padding *ngFor="let item of courseList" (click)="goCourseDetail(item)">
+			<ion-thumbnail item-left>
+				<img src="{{item.imgUrl}}">
+			</ion-thumbnail>
+			<h3>{{item.CourseName}}</h3>
+			<p>{{item.CourseIntro}}</p>
+		</ion-item>
+
+	</ion-list>

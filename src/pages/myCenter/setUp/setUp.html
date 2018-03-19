@@ -1,0 +1,74 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>设置</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+
+  <ion-list>
+    <button ion-item (click)="goMyDetail()">
+      <ion-avatar item-left >
+        <img src="{{imgUrl}}">
+      </ion-avatar>
+      <ion-note item-right>
+      个人信息
+      </ion-note>
+    </button>
+  </ion-list>
+  <ion-list no-border>
+
+<!--     <ion-list-header>
+      Classes
+    </ion-list-header> -->
+
+    <ion-item>
+      <ion-icon name='planet' item-left></ion-icon>
+      清除缓存
+      <ion-note item-right>
+      0kb
+      </ion-note>
+    </ion-item>
+
+    <ion-item>
+      <ion-toggle checked="false"></ion-toggle>
+      <ion-label>
+        视频自动播放
+      </ion-label>
+      <ion-icon name='body' item-left></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-toggle checked="false"></ion-toggle>
+      <ion-label>
+        允许非WiFi网络播放
+      </ion-label>
+      <ion-icon name='body' item-left></ion-icon>
+    </ion-item>
+
+  </ion-list>
+
+
+ <ion-list>
+    <button ion-item >
+      给我评分
+    </button>
+    <button ion-item>
+      意见反馈
+    </button>
+    <button ion-item >
+      关于护士学堂
+    </button>
+
+  </ion-list>
+
+
+<ion-list>
+  <ion-item (click)="logOut()" class="logoutbtn" color="danger">
+退出登录
+  </ion-item>
+</ion-list>
+</ion-content>

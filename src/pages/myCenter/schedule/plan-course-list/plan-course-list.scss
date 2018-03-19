@@ -1,0 +1,16 @@
+page-plan-course-list {
+	ion-thumbnail img{
+		height: 80px !important;
+		width: auto !important;
+	}
+	ion-label h3{
+		margin-top: 0 !important;
+	}
+	ion-item {
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
+	ion-item a{
+		display: flex;
+	}
+}

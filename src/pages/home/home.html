@@ -1,0 +1,164 @@
+<header-bar panelImg="assets/icon/logo.png" ></header-bar>
+<ion-content >
+
+  <ion-slides pager>
+
+    <ion-slide>
+      <img src="assets/icon/banner_02.jpg">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/icon/banner_02.jpg">
+    </ion-slide>
+
+    <ion-slide>
+      <img src="assets/icon/banner_02.jpg">
+    </ion-slide>
+
+  </ion-slides>
+  <ion-spinner  *ngIf="isLoading" class='ionSpinner'></ion-spinner>
+  <ion-refresher  (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content #refresh></ion-refresher-content>
+  </ion-refresher>
+  <ion-card style="margin-top: 0px;margin-left:0px;margin-right:0px;width: 100%;">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-3 (click)="goCourseList('免费课程','0000000002')">
+            <div class="icon_outer" >
+              <div class="icon_inner" >免</div>
+            </div>
+            <div class="icon_down" >免费课程</div>
+          </ion-col>
+          <ion-col col-3 (click)="goCourseList('精品课程','0000000001')">
+            <div class="icon_outer" >
+            <div class="icon_inner" style="background: #f53d3d">精</div>
+            </div>
+            <div class="icon_down" >精品课程</div>
+          </ion-col>
+          <ion-col col-3 (click)="goQuestionlist()">
+            <div class="icon_outer" >
+            <div class="icon_inner" style="background: #387ef5">题</div>
+            </div>
+            <div class="icon_down" >会员题库</div>
+          </ion-col>
+          <ion-col col-3 (click)="goCourseList('外科','0000000002')">
+            <div class="icon_outer" >
+            <div class="icon_inner" style="background: #bade9a">外</div>
+            </div>
+            <div class="icon_down" >外科课程</div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-3 (click)="goCourseList('内科','0000000001')">
+            <div class="icon_outer" >
+            <div class="icon_inner" style="background: #f76161">内</div>
+            </div>
+            <div class="icon_down" >内科课程</div>
+          </ion-col>
+          <ion-col col-3 (click)="goCourseList('妇科','0000000003')">
+            <div class="icon_outer" >
+              <div class="icon_inner" style="background: #fd6f9b">妇</div>
+            </div>
+            <div class="icon_down" >妇科课程</div>
+          </ion-col>
+          <ion-col col-3 (click)="goCourseList('儿科','0000000004')">
+            <div class="icon_outer" >
+              <div class="icon_inner" style="background: #ffab3e">儿</div>
+            </div>
+            <div class="icon_down" >儿科课程</div>
+          </ion-col>
+          <ion-col col-3 (click)="goCourse()">
+            <div class="icon_outer" >
+              <div class="icon_inner" style="background: #999">...</div>
+            </div>
+            <div class="icon_down" >更多课程</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-icon name="alarm" color="danger"></ion-icon>
+      你的新课程
+    </ion-card-header>
+    <ion-card-content>
+<!--         <ion-grid>
+          <ion-row>
+              <ion-col col-6 *ngFor="let item of dataMap.courseHot"><a (click)='goCourseDetail(item)'>
+              <img src="{{item.imgUrl}}">
+              <div>{{item.CourseName}}</div></a>
+              </ion-col>
+          </ion-row>
+        </ion-grid> -->
+        <ion-list>
+          <ion-item (click)='goCourseDetail(dataMap.newCourseDistribute[0])'>
+            <ion-thumbnail item-left>
+              <img src="{{dataMap.newCourseDistribute[0].imgUrl}}">
+            </ion-thumbnail>
+            <div item-right>
+              <h2>{{dataMap.newCourseDistribute[0].CourseName}}</h2>
+              <p>{{dataMap.newCourseDistribute[0].DistributeTime}}   发布</p>
+            </div>
+            <!--             <button ion-button clear item-right>去学习</button> -->
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-icon name="flame" color="danger"></ion-icon>
+        热门推荐课程
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6 *ngFor="let item of dataMap.courseHot"><a (click)='goCourseDetail(item)'>
+              <img src="{{item.imgUrl}}">
+              <div>{{item.CourseName}}</div></a>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-icon name="star" color="secondary"></ion-icon>
+        新课程
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-6 *ngFor="let item of dataMap.newCourses"><a (click)='goCourseDetail(item)'>
+              <img src="{{item.imgUrl}}">
+              <div>{{item.CourseName}}</div></a>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+       <ion-icon name="heart" color="danger"></ion-icon>
+       猜你喜欢
+     </ion-card-header>
+     <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 *ngFor="let item of dataMap.recommends"><a (click)='goCourseDetail(item)'>
+            <img src="{{item.imgUrl}}">
+            <div>{{item.CourseName}}</div></a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <div class="bottom-padding"></div>
+<!--   <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content color="primary">
+      loadingSpinner="crescent"
+      loadingText="Loading more fun...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+</ion-content>

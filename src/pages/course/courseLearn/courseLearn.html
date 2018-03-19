@@ -1,0 +1,73 @@
+<ion-header>
+	<ion-navbar  color="primary">
+		<ion-title>{{courseDetail.CourseName}}</ion-title>
+	</ion-navbar>
+</ion-header>
+<ion-content   overflow-scroll="true" [ngClass]="{fullScreen:isfull}">
+
+<div class="video-container"  data-tap-diable="true" (click)="playfull()"   [ngClass]="{hidevideo:isHideVideo}"  style="height: 50%;position: relative;">
+    <video-component #videoCom vodUrl="{{chapterDetail.vodUrl}}" (onStop)="stopPlay()"  (onFull)="fullScreen()"  (onStart)="startPlay()" style="height: 100%;"></video-component>
+
+<!--     <ion-icon name="expand"></ion-icon> -->
+</div>
+<!-- 	<video src="{{chapterDetail.vodUrl}}" controls="controls" width="100%"></video> -->
+	<ion-segment [(ngModel)]="dws">
+		<ion-segment-button value="chapter">
+			章节
+		</ion-segment-button>
+		<ion-segment-button value="discuss">
+			讨论
+		</ion-segment-button>
+		<ion-segment-button value="note">
+			笔记
+		</ion-segment-button>
+	</ion-segment>
+  <ion-spinner  *ngIf="isLoading" class='ionSpinner'></ion-spinner>
+	<div [ngSwitch]="dws" class="contentdiv">
+    <ion-list *ngSwitchCase="'chapter'">
+      <ion-item *ngFor="let item of courseDetail.catalog">
+       {{item.CatalogName}}
+       <ion-item *ngFor="let tip of courseDetail.treeData[item.CatalogName]" no-lines (click)="toPlay(tip)"  [ngClass]="{active:tip.ChapterID == currentChapter}">
+        <ion-icon name="play"></ion-icon>{{tip.ChapterName}}
+      </ion-item>
+    </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'discuss'">
+      <ion-item *ngFor="let item of courseDiscuss">
+        <ion-avatar item-left>
+          <img src="{{item.imgUrl}}">
+        </ion-avatar>
+        <h2>{{item.Name}}</h2>
+        <p>{{item.Title}}</p>
+        <button ion-button item-right clear small (click)='giveAgree(item)' [ngClass]="{noFavour:item.hasFavour == false}" >
+          <ion-icon name="thumbs-up" ></ion-icon>
+          <div>{{item.FavorCount}}</div>
+        </button>
+      </ion-item>
+      <ion-item *ngIf="isShowMore" (click)="loadDiscuss(false)">
+      <p style="text-align: center;color:#6bc30d">加载更多</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'note'">
+      <ion-item *ngFor="let item of courseNots">
+<!--         <ion-avatar item-left>
+          <img src="assets/icon/280.jpg">
+        </ion-avatar> -->
+        <h2>{{item.Name}}</h2>
+        <p>{{item.Content}}</p>
+        <ion-icon name="trash" class="trash" (click)="showNoteDelConfirm(item)"></ion-icon>
+      </ion-item>
+    </ion-list>
+</div>
+  <ion-fab right bottom  [ngClass]="{fullScreen:isfull}">
+    <button ion-fab color="primary"><ion-icon name="arrow-dropleft"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab color="danger" (click)="goAddPage('note')">笔记</button>
+      <button ion-fab color="danger" (click)="goAddPage('discuss')">评论</button>
+<!--       <button ion-fab color="danger" (click)="goAddPage('question')">提问</button>
+      <button ion-fab color="danger">分享</button> -->
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
